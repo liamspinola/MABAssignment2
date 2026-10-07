@@ -56,18 +56,19 @@ Run `npm test` to generate the HTML report in `playwright-report/`, then `npm ru
 
 Investigate failures using the trace, selectors and matching server response. Repeat intermittent failures to check for flakiness before changing time limits. AI can assist trace analysis; suggestions must match the evidence.
 
-The [recorded AI-assisted repair](docs/ai-repair/REPORT.md) includes a real failed run, trace analysis, a reviewed POM fix and the same assertions passing afterwards. The [optional cases](OPTIONAL_SELF_HEALING.md) also demonstrate one approved runtime fallback and keep traces on success. AI analysis happens during development; tests do not call an AI model. The four main mortgage tests keep their strict locators.
+The [recorded AI-assisted repair](docs/ai-repair/REPORT.md) includes a real failed run, trace analysis, a reviewed POM fix and the same assertions passing afterwards.
 
 Tests use one worker and zero retries, with response and page-state waits. Most tests have 45 seconds; navigation has 90 because it makes five server requests.
 
 ## Last full run
 
-**7 October 2026:** code checks passed and **all seven Chrome tests passed in 2.6 minutes**, including the optional demo, with no automatic reruns. The known gaps above remain.
+**7 October 2026:** code checks passed and **all eight Chrome tests passed in 2.7 minutes**, including the optional demo, with no automatic reruns. The known gaps above remain.
 
-## Q & A
+## Design decisions and trade-offs
 
 **Any decisions or trade-offs you made**
-- I had to decide if I wanted to use BDD or not, since this a simple test framework I deemed it would be a bit much and prefered simplicity
-- Wanted to add better report software and if I had the time possible could have included something such as Allure or Monocart
-- Didnt seem necessary to add any tagging
-- Couldn't find the pagecount in the UI or the API that the assignment was asking for, which I wrote about in the known gaps
+- BDD: I chose not to introduce a BDD layer because the scenarios are already readable as Playwright tests and the additional abstraction would add complexity without clear benefit for this assignment.
+- Reporting: I used Playwright's built-in list/HTML reporting, screenshots and traces rather than introducing a third-party dependency such as Allure or Monocart.
+- Parallelism: Tests run with one worker because they exercise a live public mortgage service and I wanted to avoid unnecessary concurrent traffic and reduce cross-test environmental variability.
+- Retries: Retries are disabled so intermittent failures remain visible rather than being masked by automatic reruns.
+- Count requirement: The live application did not expose the UI overall count or API totalCount described by the assignment, so I documented the mismatch rather than deriving an unsupported value.
