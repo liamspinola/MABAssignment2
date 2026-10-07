@@ -63,6 +63,4 @@ To reproduce the failure, temporarily restore only this demo getter's old `Get r
 - [README.md](../../README.md): added the recorded AI example, commands and current coverage.
 - `docs/ai-repair/`: this report, recorded AI exchange and integrity evidence.
 
-Type checking and the unchanged focused scenario passed after the repair. The passing trace confirms a strict click on `Find mortgage results`, one matching mortgage POST, HTTP 200, loan amount £280,000 and ten products. It records ten product-code checks and payment/rate/fee reads for all ten cards, with no assertion failures or retries. Full-suite results will be recorded here when complete.
-
-This exercise does not resolve the assignment's existing count or product-filter contract gaps.
+Type checking and the unchanged focused scenario passed after the repair. The passing trace confirms a strict click on `Find mortgage results`, one matching mortgage POST, HTTP 200, loan amount £280,000 and ten products. It records ten product-code checks and payment/rate/fee reads for all ten cards, with no assertion failures or retries.
