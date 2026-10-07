@@ -52,7 +52,7 @@ Made-up mortgage details are stored in `test-assets/mortgageTestData.ts`.
 
 ## Reports and failures
 
-Run `npm test` to generate the HTML report in `playwright-report/`, then `npm run report` to open it. Failed tests save screenshots and traces in `test-results/`. Leave these generated files out of the submission.
+Run `npm test` to generate the HTML report in `playwright-report/`, then `npm run report` to open it. Failed tests save screenshots and traces in `test-results/`.
 
 Investigate failures using the trace, selectors and matching server response. Repeat intermittent failures to check for flakiness before changing time limits. AI can assist trace analysis; suggestions must match the evidence.
 
@@ -63,10 +63,6 @@ Tests use one worker and zero retries, with response and page-state waits. Most 
 ## Last full run
 
 **7 October 2026:** code checks passed and **all seven Chrome tests passed in 2.6 minutes**, including the optional demo, with no automatic reruns. The known gaps above remain.
-
-See [CHANGE_REPORT.md](CHANGE_REPORT.md) for the changes from the assignment review and their verification results.
-
-For submission, include the source, README, config files and `package-lock.json`. Leave out `node_modules`, reports, test results and local environment files.
 
 ## Q & A
 
