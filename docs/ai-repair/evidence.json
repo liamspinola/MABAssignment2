@@ -1,0 +1,129 @@
+{
+  "recordedOn": "2026-10-07",
+  "exercise": "AI-assisted developer repair of an intentionally stale locator",
+  "runtimeAiCalls": false,
+  "test": "tests/selfHealing.spec.ts: A reviewed locator repair preserves the mortgage result checks",
+  "aiReview": {
+    "prompt": "analysis-prompt.md",
+    "response": "analysis-response.md",
+    "repair": "repair.diff",
+    "role": "Read-only Codex AI reviewer; lead agent reviewed and applied the scoped proposal"
+  },
+  "preliminaryAttempt": {
+    "status": "failed",
+    "phase": "Consent handling before label mutation",
+    "output": "test-results/ai-repair-before",
+    "htmlReport": "playwright-report/ai-repair-before",
+    "note": "Preserved separately; unchanged rerun reached the intended locator failure"
+  },
+  "before": {
+    "status": "failed",
+    "startTime": "2026-10-07T04:14:04.946Z",
+    "duration": 26978.07,
+    "expected": 0,
+    "skipped": 0,
+    "unexpected": 1,
+    "flaky": 0,
+    "output": "test-results/ai-repair-locator-before",
+    "htmlReport": "playwright-report/ai-repair-locator-before",
+    "reportedError": "TimeoutError: page.waitForResponse: Timeout 20000ms exceeded while waiting for event \"response\"",
+    "traceObservations": {
+      "buttonAccessibleName": "Find mortgage results",
+      "visibleButtonText": "Get results",
+      "attemptedStrictClickName": "Get results",
+      "resultsEndpointRequestsRecorded": 0,
+      "formCriteriaFilled": {
+        "propertyValue": 350000,
+        "deposit": 70000,
+        "mortgageTerm": 25,
+        "income": 80000
+      }
+    }
+  },
+  "repair": {
+    "file": "pages/mortgageCalculatorPage.ts",
+    "getter": "reviewedGetResultsButton",
+    "before": "private get reviewedGetResultsButton() { return this.purchaseForm.getByRole('button', { name: 'Get results', exact: true }); }",
+    "after": "private get reviewedGetResultsButton() { return this.purchaseForm.getByRole('button', { name: 'Find mortgage results', exact: true }); }"
+  },
+  "integrity": {
+    "onlyApprovedGetterChanged": true,
+    "comparison": "Full POM source, normalized line endings, compared with baseline plus the approved one-line replacement",
+    "protectedFilesUnchanged": true,
+    "sha256": [
+      {
+        "file": "pages/mortgageCalculatorPage.ts",
+        "beforeSha256": "F4FEF74470199AD172B12CD66205C974B0AD12A0EC481C023AD3AE4DE6CAD4FD",
+        "afterSha256": "2FD793DA42D501E296D69035AA817A651D76441636E7FA254BAB085757906225",
+        "unchanged": false
+      },
+      {
+        "file": "tests/selfHealing.spec.ts",
+        "beforeSha256": "1DA26864160B4F790E272FA585D196900933CE2DFC0DF91D31FF3B9261343EC3",
+        "afterSha256": "1DA26864160B4F790E272FA585D196900933CE2DFC0DF91D31FF3B9261343EC3",
+        "unchanged": true
+      },
+      {
+        "file": "fixtures/selfHealingFixtures.ts",
+        "beforeSha256": "44894C32339B3D688DAA7501183D5052581492884DBE91BFDB469066D5B01A76",
+        "afterSha256": "44894C32339B3D688DAA7501183D5052581492884DBE91BFDB469066D5B01A76",
+        "unchanged": true
+      },
+      {
+        "file": "test-assets/mortgageTestData.ts",
+        "beforeSha256": "FB0E3E9364F661F21B4A901B7BEB9343DFD1A9445D36192E90A51D147853F59C",
+        "afterSha256": "FB0E3E9364F661F21B4A901B7BEB9343DFD1A9445D36192E90A51D147853F59C",
+        "unchanged": true
+      },
+      {
+        "file": "tests/search.spec.ts",
+        "beforeSha256": "1D6F0C2971E343634E98575E8440377A0EE47E2AE47C7C757D3871A25FD509A0",
+        "afterSha256": "1D6F0C2971E343634E98575E8440377A0EE47E2AE47C7C757D3871A25FD509A0",
+        "unchanged": true
+      },
+      {
+        "file": "playwright.config.ts",
+        "beforeSha256": "C191EDC7F404D38FBBDD80C38C1C9B8832F3C7902E382A23503C494C78C97AA6",
+        "afterSha256": "C191EDC7F404D38FBBDD80C38C1C9B8832F3C7902E382A23503C494C78C97AA6",
+        "unchanged": true
+      }
+    ]
+  },
+  "after": {
+    "status": "passed",
+    "startTime": "2026-10-07T04:17:23.630Z",
+    "duration": 21508.39,
+    "expected": 1,
+    "skipped": 0,
+    "unexpected": 0,
+    "flaky": 0,
+    "output": "test-results/ai-repair-after",
+    "htmlReport": "playwright-report/ai-repair-after",
+    "retries": 0,
+    "traceObservations": {
+      "strictClickName": "Find mortgage results",
+      "strictClickDurationMs": 96,
+      "resultsPostCount": 1,
+      "requestCriteria": {
+        "propertyValue": 350000,
+        "deposit": 70000,
+        "income": 80000,
+        "mortgageTerm": 25,
+        "mortgagePurpose": 0,
+        "mortgageType": 0
+      },
+      "responseStatus": 200,
+      "loanAmount": 280000,
+      "productCount": 10,
+      "errorType": 0,
+      "error": "",
+      "productCodeAssertions": 10,
+      "paymentRateFeeReadsForCards": 10
+    }
+  },
+  "fullSuite": {
+    "status": "running",
+    "output": "test-results/ai-repair-full",
+    "htmlReport": "playwright-report/ai-repair-full"
+  }
+}

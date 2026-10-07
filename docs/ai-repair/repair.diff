@@ -1,0 +1,5 @@
+--- a/pages/mortgageCalculatorPage.ts
++++ b/pages/mortgageCalculatorPage.ts
+@@ -40 +40 @@
+-    private get reviewedGetResultsButton() { return this.purchaseForm.getByRole('button', { name: 'Get results', exact: true }); }
++    private get reviewedGetResultsButton() { return this.purchaseForm.getByRole('button', { name: 'Find mortgage results', exact: true }); }
